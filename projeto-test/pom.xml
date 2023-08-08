@@ -3,18 +3,17 @@
   <groupId>projeto-test</groupId>
   <artifactId>projeto-test</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-<properties>
-
-	<maven.compiler.source>17</maven.compiler.source>
-	<maven.compiler.target>17</maven.compiler.target>
+  <!--VERSAO DO JAVA -->
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
- <dependencies>
-<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>8.0.33</version>
-</dependency>
-
-</dependencies>
+	 <dependencies>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+   			 <groupId>mysql</groupId>
+    			<artifactId>mysql-connector-java</artifactId>
+    		<version>8.0.33</version>
+		</dependency>
+	</dependencies>
 </project>
