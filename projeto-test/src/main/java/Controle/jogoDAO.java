@@ -18,7 +18,7 @@ public class jogoDAO {
 		// Abrir a conexão com banco de dados
 		Connection con = c.conectar();
 		
-		String query = "INSERT INTO jogo (idJogo, nomeJogo ) VALUES(?, ? )";
+		String query = "INSERT INTO jogo (id_Jogo, nome_Jogo ) VALUES(?, ? )";
 		
 		
 		try {
