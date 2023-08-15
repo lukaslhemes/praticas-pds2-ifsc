@@ -2,11 +2,50 @@ package Controle;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modelo.jogo;
 
 public class jogoDAO {
+	
+	public ArrayList<jogo> listar () {
+		
+		conexao c = conexao.getInstancia();
+		
+		// Abrir a conexão com banco de dados
+		Connection con = c.conectar();
+		
+		ArrayList<jogo> jogo = new ArrayList();
+		
+		String query = "SELECT * FROM jogo";
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+		ResultSet rs = ps. executeQuery();
+		while(rs.next()) {
+			int idjogo = rs.getInt("id_jogo");
+			
+			String nomejogo = rs.getString("nome_jogo");
+			
+			jogo j = new jogo();
+			j.setId_jogo(idjogo);
+			j.setNome_jogo(nomejogo);
+			
+			jogo.add(j);
+		}
+		
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+		c.fecharConexao();
+		
+		return jogo;
+			
+	}
+	
+	
 	
 	// metodo que recebe um jogo 
 	
