@@ -38,8 +38,10 @@ public class jogoDAO {
 		
 	} catch (SQLException e) {
 		e.printStackTrace();
-	}
+	}finally {
 		c.fecharConexao();
+	}
+		
 		
 		return jogo;
 			
@@ -68,13 +70,57 @@ public class jogoDAO {
 			
 			ps.executeUpdate();
 			
-			c.fecharConexao();
 			
 			return true;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			c.fecharConexao();
 		}
+		
+		return false;
+	}
+	public boolean excluir(jogo j) {
+		conexao c = conexao.getInstancia();
+		Connection con = c.conectar();
+		
+		String query = "DELETE FROM jogo WHERE id_jogo = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, j.getId_jogo());
+			ps.executeUpdate();
+			
+			return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			c.fecharConexao();
+		}
+		
+		return false;
+	}
+	
+	public boolean atualizar (jogo j) {
+		conexao c = conexao.getInstancia();
+		Connection con = c.conectar();
+		
+		String query = "UPDATE jogo SET" + "nome_jogo = ? WHERE id_jogo IN (?)";
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, j.getNome_jogo());
+			ps.setInt(1, j.getId_jogo());
+			ps.executeUpdate();
+			
+			c.fecharConexao();
+			
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			c.fecharConexao();		
+			}
 		
 		return false;
 	}
